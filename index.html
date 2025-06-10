@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>150살 인생</title>
+  <style>
+ @font-face {
+    font-family: 'HakgyoansimDunggeunmisoTTF-B';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimDunggeunmisoTTF-B.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+    body {
+      margin: 0;
+      background-color: #45C4B0;
+      color: #012030;
+    font-family: 'HakgyoansimDunggeunmisoTTF-B';
+    }
+
+    nav.상단바 {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      background-color:#9AEBA3;
+      padding: 10px 10px;
+      margin: 10px 15px;
+       border-radius: 12px;
+     
+    }
+    .상단바-버튼 {
+      width: 40px;
+      height: 40px;
+      background-color:#DAFDBA;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+    }
+
+    .상단바-버튼 a {
+      color: #012030;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .슬라이더-헤더 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      background-color: #9AEBA3;
+      padding: 25px 5px;
+      margin: 15px 15px 0;
+      border-radius: 12px;
+      font-size: 37px;
+      font-weight: bold;
+    }
+
+    #슬라이더-텍스트 {
+      flex: 1;
+      text-align: center;
+    }
+
+    .슬라이더-요일 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #9AEBA3;
+      padding: 10px 10px;
+      margin: 15px 15px 0;
+      border-radius: 12px;
+      font-size: 13px;
+      
+    }
+
+    .요일-그리드 {
+      display: flex;
+      gap: 12px;
+    }
+
+    .요일-그리드 div {
+      width: 42px;
+      height: 42px;
+      text-align: center;
+      line-height: 45px;
+      font-size: 15px;
+      background-color:#33cc99;
+      border-radius: 8px;
+     
+      cursor: pointer;
+    }
+
+    #다음버튼 {
+      background: none;
+      border: none;
+      font-size: 30px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    #다음버튼:hover {
+      transform: scale(1.2);
+    }
+
+.카드-컨테이너 {
+  width: 100%;
+  max-width: 900px;
+  min-width: 320px; /* 너무 작아지지 않도록 최소 너비 */
+  margin: 15px auto;     /* 위아래 20px, 좌우 중앙정렬 */
+  padding: 0 15px;        /* 좌우 여백 확보 */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 항상 2열 */
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+
+
+    .카드 {
+      background-color: #9AEBA3;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 260px;
+      transition: transform 0.2s ease;
+      text-align: center;
+    }
+
+    .카드:hover {
+      transform: translateY(-5px);
+    }
+
+    .카드 img {
+      width: 80px;
+      height: 80px;
+      margin-top: 15px;
+      object-fit: contain;
+      padding: 10px;
+    }
+
+    .카드-제목 {
+      font-size: 27px;
+      
+      margin-bottom: 5px;
+    }
+
+    .버튼 {
+      background-color: #DAFDBA;
+      color: #012030;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+ 
+      font-size: 13px;
+      margin-top: 25px;
+      transition: background-color 0.2s ease;
+    }
+
+    .버튼:hover {
+      background-color: #e7aa69;
+      color: #012030;
+    }
+
+    .빈-카드 {
+      opacity: 0.3;
+      border-style: dashed;
+    }
+
+ 
+
+
+    .탭바-항목 {
+      color: #012030;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .프로필-원 {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow:hidden;
+
+}
+.프로필-원 img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  transform: translateY(0);
+}
+
+/* 호버 시 위아래로 2회 천천히 튀는 효과 */
+.프로필-원 img:hover {
+  animation: bounce-slow-twice 1s ease-in-out forwards;
+}
+
+/* bounce-slow-twice 키프레임: 위아래로 2회 튀다가 원래 위치에서 종료 */
+@keyframes bounce-slow-twice {
+  0%   { transform: translateY(0); }
+  20%  { transform: translateY(-20px); }  /* 1st up */
+  40%  { transform: translateY(0); }      /* 1st down */
+  60%  { transform: translateY(-15px); }  /* 2nd up */
+  80%  { transform: translateY(0); }  
+     90%  { transform: translateY(-5); } 
+  100% { transform: translateY(0); }      /* 종료 후 기본 위치 */
+}
+@keyframes flashyBounceIn {
+  0% { transform: scale(0.5) rotate(-20deg); opacity: 0; }
+  50% { transform: scale(1.3) rotate(10deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.flashy-bounce {
+  animation: flashyBounceIn 0.7s ease-out;
+}
+
+
+  /* 요일 애니메이션 */
+@keyframes shake {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  10%, 30%, 50%, 70%, 90% { transform: translate(-5px, 0) rotate(-5deg); }
+  20%, 40%, 60%, 80% { transform: translate(5px, 0) rotate(5deg); }
+}
+
+@keyframes shake-strong {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  10%, 30%, 50%, 70%, 90% { transform: translate(-8px, 0) rotate(-8deg); }
+  20%, 40%, 60%, 80% { transform: translate(8px, 0) rotate(8deg); }
+}
+
+@keyframes shake-weak {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  10%, 30%, 50%, 70%, 90% { transform: translate(-2px, 0) rotate(-2deg); }
+  20%, 40%, 60%, 80% { transform: translate(2px, 0) rotate(2deg); }
+}
+
+    .월:hover, .월:active,
+    .일:hover, .일:active {
+      animation: shake-strong 0.5s ease-in-out infinite;
+      color: red;
+    }
+
+    .금:hover, .금:active,
+    .토:hover, .토:active {
+      animation: shake-weak 0.5s ease-in-out infinite;
+    }
+
+    .화:hover, .화:active,
+    .수:hover, .수:active,
+    .목:hover, .목:active {
+      animation: shake 0.5s ease-in-out infinite;
+    }
+@keyframes slideOutLeft {
+  0% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(-100%); }
+}
+
+@keyframes slideInRight {
+  0% { opacity: 0; transform: translateX(100%); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.슬라이드-아웃 {
+  animation: slideOutLeft 0.4s ease forwards;
+}
+
+.슬라이드-인 {
+  animation: slideInRight 0.4s ease forwards;
+}
+@keyframes bounceOut {
+  0% { transform: scale(1) translateY(0); opacity: 1; }
+  30% { transform: scale(1.2) translateY(-10px); }
+  100% { transform: scale(0.6) translateY(100px); opacity: 0; }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.6) translateY(-100px); opacity: 0; }
+  70% { transform: scale(1.2) translateY(10px); }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+@keyframes shake-before {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); }
+  20%, 40%, 60%, 80% { transform: translateX(6px); }
+}
+
+.shake-before {
+  animation: shake-before 0.5s ease-in-out;
+}
+
+.bounce-out {
+  animation: bounceOut 0.5s forwards ease-in;
+}
+
+.bounce-in {
+  animation: bounceIn 0.5s forwards ease-out;
+}
+@keyframes shake-before {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); }
+  20%, 40%, 60%, 80% { transform: translateX(6px); }
+}
+
+.shake-before {
+  animation: shake-before 0.5s ease-in-out;
+}
+
+@keyframes damped-bounce-in {
+  0% { transform: translateY(-100px); opacity: 0; }
+  20% { transform: translateY(30px); opacity: 1; }
+  40% { transform: translateY(-20px); }
+  60% { transform: translateY(12px); }
+  80% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.damped-bounce-in {
+  animation: damped-bounce-in 0.8s ease-out;
+}
+
+  </style>
+</head>
+<body>
+
+ <nav class="상단바">
+  
+  <div class="상단바-버튼"><a href="corse.html">코스</a></div>
+  <div class="상단바-버튼"style="background-color: #45C4B0;" ><a href="index.html">홈</a></div> <!-- 새로 추가 -->
+  <div style="margin-left: auto;" class="상단바-버튼">
+    
+      <div class="프로필-원"><img src="dog.png" alt="프로필" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;"></div>
+    </a>
+  </div>
+</nav>
+
+
+  <div class="슬라이더-헤더">
+    <div id="슬라이더-텍스트">건강이 곧 전부다</div>
+    <button id="다음버튼">
+      <img src="c.png" alt="다음" style="width: 70px; height: 70px;">
+    </button>
+  </div>
+  
+  <div class="슬라이더-요일">
+    <div class="요일-그리드">
+      <div class="월">월</div>
+      <div class="화">화</div>
+      <div class="수">수</div>
+      <div class="목">목</div>
+      <div class="금">금</div>
+      <div class="토">토</div>
+      <div class="일">일</div>
+    </div>
+  </div>
+
+  <div class="카드-컨테이너">
+    <div class="카드">
+      <div class="카드-제목">BMI 계산</div>
+      <img src="bmi.png" alt="BMI">
+      <a href="bmi.html" class="버튼">계산하기</a>
+    </div>
+
+    <div class="카드">
+      <div class="카드-제목">기초대사량</div>
+      <img src="t.png" alt="기초대사량">
+      <a href="gicho.html" class="버튼">계산하기</a>
+    </div>
+
+    <div class="카드">
+      <div class="카드-제목">추천 유튜브</div>
+      <img src="y.png" alt="유튜브">
+      <a href="https://www.youtube.com/@%ED%94%BC%EC%A7%80%EC%BB%AC%EA%B0%A4%EB%9F%AC%EB%A6%AC" target="_blank" class="버튼">보러가기</a>
+    </div>
+
+    <div class="카드">
+      <div class="카드-제목">치팅데이</div>
+      <img src="k.png" alt="치팅데이">
+      <a href="cheating.html" class="버튼">보러가기</a>
+    </div>
+  </div>
+
+  
+ <script>
+const 슬라이더텍스트 = document.getElementById("슬라이더-텍스트");
+const 다음버튼 = document.getElementById("다음버튼");
+
+const 문구목록 = [
+  "건강이 곧 전부다",
+  "너 오늘 마라탕 먹었지",
+  "다이어트는 내일부터?...",
+  "1키로당 10만원"
+];
+
+let 현재인덱스 = 0;
+
+다음버튼.addEventListener("click", () => {
+  // 흔들림 효과 먼저
+  슬라이더텍스트.classList.remove("damped-bounce-in");
+  슬라이더텍스트.classList.add("shake-before");
+
+  setTimeout(() => {
+    // 흔들림 제거
+    슬라이더텍스트.classList.remove("shake-before");
+
+    // 텍스트 변경
+    현재인덱스 = (현재인덱스 + 1) % 문구목록.length;
+    슬라이더텍스트.textContent = 문구목록[현재인덱스];
+
+    // 튀는 애니메이션 적용
+    슬라이더텍스트.classList.add("damped-bounce-in");
+  }, 500); // 흔들림 끝난 뒤 실행
+});
+</script>
+
+
+  
+</body>
+</html>

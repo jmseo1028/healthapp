@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>BMI 계산기</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @font-face {
+    font-family: 'HakgyoansimDunggeunmisoTTF-B';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimDunggeunmisoTTF-B.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+    body {
+      margin: 0;
+       padding: 0;
+       overflow-x: hidden;
+  background-color: #45C4B0;
+  color: #012030;
+   font-family: 'HakgyoansimDunggeunmisoTTF-B';
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 가로 중앙 정렬 */
+    }
+
+    nav.상단바 {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      background-color: #9AEBA3;
+      padding: 10px;
+      margin:0px 10px;
+      border-radius: 12px;
+    }
+.highlighted {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.dimmed {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+    .상단바-버튼 {
+      width: 40px;
+      height: 40px;
+      background-color: #DAFDBA;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .상단바-버튼 a {
+      color: black;
+    
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+
+   /* 기존 .container 제거하고 아래로 대체 */
+.container {
+ width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      padding:  15px;
+      box-sizing: border-box;
+    
+}
+
+
+
+/* .card는 동일 구조 */
+.card {
+  background-color: #9AEBA3;
+  width: 100%;
+  padding: 25px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  
+}
+
+      
+    
+
+    .card-title {
+      margin-top: 40px;
+      font-size: 22px;
+   
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .calculator label {
+      display: block;
+      margin-bottom: 18px;
+  
+    }
+
+    .calculator input,
+    .calculator button {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #DAFDBA;
+      font-size: 14px;
+     font-family: 'HakgyoansimDunggeunmisoTTF-B';
+      margin-bottom: 18px;
+    }
+
+    .calculator button {
+      background: #DAFDBA;
+      color: #012030;
+      font-weight: bold;
+      margin-top: 35px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .calculator button:hover {
+      background-color: #e7aa69;
+      color: #012030;
+    }
+
+    .result {
+      margin-top: 10px;
+      padding-top: 5px;
+      min-height: 24px;
+      font-size: 16px;
+      color: #00aa55;
+      text-align: center;
+    }
+
+    .bmi-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 40px; /* ✅ 여기가 핵심! */
+}
+
+
+    .bmi-images div {
+      background-color: #33cc99;
+      border-radius: 12px;
+      padding: 15px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .bmi-images div img {
+      width: 120px;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .bmi-images div:hover {
+      transform: translateY(-5px);
+    }
+
+    .bmi-images div p {
+      margin: 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+     .프로필-원 {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow:hidden;
+      }
+    .프로필-원 img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  transform: translateY(0);
+}
+
+/* 호버 시 위아래로 2회 천천히 튀는 효과 */
+.프로필-원 img:hover {
+  animation: bounce-slow-twice 1s ease-in-out forwards;
+}
+
+/* bounce-slow-twice 키프레임: 위아래로 2회 튀다가 원래 위치에서 종료 */
+@keyframes bounce-slow-twice {
+  0%   { transform: translateY(0); }
+  20%  { transform: translateY(-20px); }  /* 1st up */
+  40%  { transform: translateY(0); }      /* 1st down */
+  60%  { transform: translateY(-15px); }  /* 2nd up */
+  80%  { transform: translateY(0); }  
+     90%  { transform: translateY(-5); } 
+  100% { transform: translateY(0); }      /* 종료 후 기본 위치 */
+}
+  </style>
+</head>
+<body>
+<div style="width: 100%; max-width: 500px; padding: 10px; box-sizing: border-box; position: relative;">
+  <a href="index.html" style="
+    display: inline-block;
+    background-color: #DAFDBA;
+    color: #012030;
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  ">
+    <!-- stroke-width를 4로 조절 -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"
+         fill="none" stroke="#012030" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 11l-4 4l4 4m-4-4h11a4 4 0 0 0 0-8h-1" />
+    </svg>
+  </a>
+</div>
+  
+  
+ <nav class="상단바">
+  <div class="상단바-버튼"><a href="index.html">홈</a></div>
+  <div class="상단바-버튼"><a href="corse.html">코스</a></div>
+  <!-- 새로 추가 -->
+  <div style="margin-left: auto;" class="상단바-버튼">
+   
+      <div class="프로필-원"><img src="dog.png" alt="프로필" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;"></div>
+    </a>
+  </div>
+</nav>
+
+  <div class="container">
+    <div class="card">
+      <div class="card-title">BMI 측정</div>
+      <div class="calculator">
+        <label for="bmi-height">키 (cm):</label>
+        <input type="number" id="bmi-height" placeholder="예: 170" min="0" />
+        <label for="bmi-weight">체중 (kg):</label>
+        <input type="number" id="bmi-weight" placeholder="예: 65" min="0" />
+        <button onclick="calculateBMI()">계산하기</button>
+      </div>
+      <div class="result" id="bmi-result"></div>
+
+      <div class="bmi-images">
+        <div id="underweight">
+          <img src="l.png" alt="저체중" />
+          <p>저체중</p>
+        </div>
+        <div id="normal">
+          <img src="n.png" alt="정상" />
+          <p>정상</p>
+        </div>
+        <div id="overweight">
+          <img src="p.png" alt="과체중" />
+          <p>과체중</p>
+        </div>
+        <div id="obese">
+          <img src="b.png" alt="비만" />
+          <p>비만</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calculateBMI() {
+      const height = parseFloat(document.getElementById('bmi-height').value);
+      const weight = parseFloat(document.getElementById('bmi-weight').value);
+      const result = document.getElementById('bmi-result');
+
+      if (!height || !weight || height <= 0 || weight <= 0) {
+        result.innerText = '올바른 숫자를 입력해주세요.';
+        clearHighlights();
+        return;
+      }
+
+      const heightM = height / 100;
+      const bmi = weight / (heightM * heightM);
+      const bmiRounded = bmi.toFixed(1);
+
+      let category = '';
+      let activeId = '';
+
+      if (bmi < 18.5) {
+        category = '저체중';
+        activeId = 'underweight';
+      } else if (bmi < 23) {
+        category = '정상';
+        activeId = 'normal';
+      } else if (bmi < 25) {
+        category = '과체중';
+        activeId = 'overweight';
+      } else {
+        category = '비만';
+        activeId = 'obese';
+      }
+
+      result.innerHTML = `당신의 BMI는 <strong>${bmiRounded}</strong>입니다. 상태: <strong>${category}</strong>`;
+      highlightImage(activeId);
+    }
+
+   function highlightImage(activeId) {
+  const ids = ['underweight', 'normal', 'overweight', 'obese'];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (id === activeId) {
+      el.classList.add('highlighted');
+      el.classList.remove('dimmed');
+    } else {
+      el.classList.add('dimmed');
+      el.classList.remove('highlighted');
+    }
+  });
+}
+
+
+    function clearHighlights() {
+      const ids = ['underweight', 'normal', 'overweight', 'obese'];
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        el.classList.remove('highlighted');
+        el.classList.remove('dimmed');
+      });
+    }
+  </script>
+</body>
+</html>

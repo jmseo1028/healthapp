@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>치팅데이란?</title>
+  <style>
+    @font-face {
+    font-family: 'HakgyoansimDunggeunmisoTTF-B';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimDunggeunmisoTTF-B.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+    .프로필-원 {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow:hidden;
+
+}
+.프로필-원 img {
+  width: 80px;
+  height: 80px;     /* height는 auto로 */
+  object-fit: cover;
+  display: block;   /* inline 이미지 간격 제거 */
+}
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background-color: #45C4B0;
+      color: #012030;
+      font-family: 'HakgyoansimDunggeunmisoTTF-B';
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+ .content strong {
+    display: block;              /* 줄 전체 차지 -> 문단처럼 보이게 */
+    font-size: 1.2em;            /* 부모 글자 크기의 120% */
+    margin-top: 1em;             /* 위쪽 여유 공간 */
+    margin-bottom: 0.5em;        /* 아래쪽 여유 공간 */
+  }
+
+  .content br {
+    line-height: 1.7;           /* 줄 간격 유지 (브라우저마다 차이 있을 수 있음) */
+  }
+    nav.상단바 {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      background-color: #9AEBA3;
+      padding: 10px;
+      margin:0px 15px;
+      border-radius: 12px;
+    }
+
+    .상단바-버튼 {
+      width: 40px;
+      height: 40px;
+      background-color: #DAFDBA;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .상단바-버튼 a {
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .main {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      padding:  15px;
+      box-sizing: border-box;
+    
+    }
+
+    .card {
+      background-color: #9AEBA3;
+      width: 100%;
+      padding: 25px;
+      border-radius: 15px;
+      box-sizing: border-box;
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .content {
+      font-size: 15px;
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+
+   .프로필-원 img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  transform: translateY(0);
+}
+
+/* 호버 시 위아래로 2회 천천히 튀는 효과 */
+.프로필-원 img:hover {
+  animation: bounce-slow-twice 1s ease-in-out forwards;
+}
+
+/* bounce-slow-twice 키프레임: 위아래로 2회 튀다가 원래 위치에서 종료 */
+@keyframes bounce-slow-twice {
+  0%   { transform: translateY(0); }
+  20%  { transform: translateY(-20px); }  /* 1st up */
+  40%  { transform: translateY(0); }      /* 1st down */
+  60%  { transform: translateY(-15px); }  /* 2nd up */
+  80%  { transform: translateY(0); }  
+     90%  { transform: translateY(-5); } 
+  100% { transform: translateY(0); }      /* 종료 후 기본 위치 */
+}
+
+  </style>
+</head>
+<body>
+
+
+  <div style="width: 100%; max-width: 500px; padding: 10px; box-sizing: border-box; position: relative;">
+  <a href="index.html" style="
+    display: inline-block;
+    background-color: #DAFDBA;
+    color: #012030;
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  ">
+    <!-- SVG 아이콘으로 교체 -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"
+         fill="none" stroke="#012030" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 11l-4 4l4 4m-4-4h11a4 4 0 0 0 0-8h-1" />
+    </svg>
+  </a>
+</div>
+  
+
+<nav class="상단바">
+  <div class="상단바-버튼"><a href="index.html">홈</a></div>
+  <div class="상단바-버튼"><a href="corse.html">코스</a></div>
+
+  <div style="margin-left: auto;" class="상단바-버튼">
+    
+      <div class="프로필-원"><img src="dog.png" alt="프로필"></div>
+    </a>
+  </div>
+</nav>
+
+<div class="main">
+  <div class="card">
+    <div class="card-title">치팅데이란?</div>
+    <div class="content">
+      치팅데이는 다이어트나 식단 조절 중 하루 정도 식단을 자유롭게 먹는 날을 말합니다. 체중 감량을 위한 지속적인 칼로리 제한이 신진대사를 느리게 만들 수 있는데, 치팅데이를 통해 이를 일시적으로 활성화시켜주는 효과가 있습니다.<br><br>
+
+      그러나 너무 자주 하거나 과도한 폭식은 오히려 다이어트를 방해할 수 있으니 주의해야 합니다. 일반적으로 일주일에 한 번, 적당한 범위 내에서 자신이 즐기는 음식을 먹는 것이 좋습니다.<br><br>
+
+      <strong>치팅데이 팁:</strong><br>
+      • 계획적으로 즐기기 (먹을 양/시간 미리 정하기)<br>
+      • 다음 날 다시 식단 복귀<br>
+      • 폭식보다는 "포상" 개념으로 생각하기<br><br>
+
+      잘 활용하면 다이어트 스트레스를 줄이고 장기적인 성공에 도움이 될 수 있습니다!
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
